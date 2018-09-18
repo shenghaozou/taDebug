@@ -14,15 +14,15 @@ import math
 
 
 # Insert predictPopulation(stateName, growthRate, yearA, yearB): function here
-# Step 1: Using the statename retrieve the intial population for yearA
+# Step 1: Using the statename retrieve the population for yearA
 # Step 2: Calculate time between yearA and yearB
 # Step 3: Use the math.exp() function in the given formula to calculate final population
 # Step 4: Return the predicted population
 
 
 # Insert calcGrowthRate(stateName, yearA, yearB) function here
-# Step 1: Using the statename retrieve the intial population for yearA
-# Step 1: Using the statename retrieve the final population for yearB
+# Step 1: Using the statename retrieve the population for yearA
+# Step 1: Using the statename retrieve the population for yearB
 # Step 2: Calculate time between yearA and yearB
 # Step 3: Use the math.log() function in the given formula to calculate growth rate
 # Step 4: Return the final population

@@ -3,6 +3,7 @@
 In this project, you'll learn about creating and calling functions, arguments, return values and math module. To start, download these files:
 
 * [main.py](https://raw.githubusercontent.com/shenghaozou/taDebug/master/main.py)
+* [project.py](https://raw.githubusercontent.com/shenghaozou/taDebug/master/project.py)
 * [test.py](https://raw.githubusercontent.com/shenghaozou/taDebug/master/test.py)
 * [area.csv](https://raw.githubusercontent.com/shenghaozou/taDebug/master/area.csv)
 * [population.csv](https://raw.githubusercontent.com/shenghaozou/taDebug/master/population.csv)
@@ -18,7 +19,29 @@ python test.py
 You should see the following output:
 
 ```
-output
+Your Python version: Python 3.6.5
+
+RESULTS:
+  Problem 1: function getMaximumLand not found
+  Problem 2: function getMaximumLand not found
+  Problem 3: function getMaximumLand not found
+  Problem 4: function getMaximumLand not found
+  Problem 5: function getMaximumLand not found
+  Problem 6: function getMinimumPopulationDensity not found
+  Problem 7: function getMinimumPopulationDensity not found
+  Problem 8: function getMinimumPopulationDensity not found
+  Problem 9: function getMinimumPopulationDensity not found
+  Problem 10: function getMinimumPopulationDensity not found
+  Problem 11: function predictPopulation not found
+  Problem 12: function predictPopulation not found
+  Problem 13: function predictPopulation not found
+  Problem 14: function predictPopulation not found
+  Problem 15: function predictPopulation not found
+  Problem 16: function calcGrowthRate not found
+  Problem 17: function calcGrowthRate not found
+  Problem 18: function calcGrowthRate not found
+  Problem 19: function calcGrowthRate not found
+  Problem 20: function calcGrowthRate not found
 ```
 
 ##  Introduction
