@@ -65,7 +65,7 @@ You will write **at least four(4)** functions with the following names and behav
 1. **getMaximumLand(stateName1, stateName2, stateName3)**: Find the max value for land area among the three given area values which will be passed as parameters. To do this we can use the inbuilt [max()](https://docs.python.org/2/library/functions.html#max) function.
 2. **getMinimumPopulationDensity(stateName1, stateName2, stateName3, year)**: Population density is measured as population per unit area. The formula to calculate population density is:
 **Population Density = Population / Land Area**. For this function, you need to retrieve population and area values for the given states and calculate the density. We then find the min value of population density among the three values passed as parameters. To do this, we can use the inbuilt [min()](https://docs.python.org/2/library/functions.html#min) function.
-3. **calcNewPopulation(initPopulation, growthRate, time)**: We use the following formula for population growth prediction in this question: <img src="population.png" alt="drawing" width="100"/>. Here,
+3. **calcNewPopulation(initPopulation, growthRate, time)**: We use the following formula for population growth prediction in this question: <img src="Population.png" alt="drawing" width="100"/>. Here,
     1. <img src="Pa.png" alt="drawing" width="15"/> is the population for the specific state in year *a* (the initial population).
     2. <img src="Pb.png" alt="drawing" width="15"/>is the population for the specific state in year *b* (the final population), *b* > *a*. 
     3. *r* is the growth rate.
