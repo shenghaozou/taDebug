@@ -1,11 +1,11 @@
 # Project 2
 
-In this project, you'll learn about creating and calling functions, arguments, return values and math module. To start, download these two files:
+In this project, you'll learn about creating and calling functions, arguments, return values and math module. To start, download these files:
 
-* [main.py](./main.py)
-* [test.py](./test.py)
-* [area.csv](./area.csv)
-* [population.csv](./population.csv)
+* [main.py](https://raw.githubusercontent.com/shenghaozou/taDebug/master/main.py)
+* [test.py](https://raw.githubusercontent.com/shenghaozou/taDebug/master/test.py)
+* [area.csv](https://raw.githubusercontent.com/shenghaozou/taDebug/master/area.csv)
+* [population.csv](https://raw.githubusercontent.com/shenghaozou/taDebug/master/population.csv)
 
 You will change main.py and hand it in. You should not change test.py, and you should not hand it in; it's only purpose is to tell you your grade in advance.
 
@@ -51,7 +51,7 @@ getArea function takes the name of one state as an argument and returns the size
 ```
 >>> import project
 >>> project.getArea("Wisconsin")
->>> 65498
+>>> 65496.38
 ```
 **getPopulation(stateName, year)**
 
@@ -59,8 +59,8 @@ getPopulation function takes the name of one state and a year as arguments and r
 
 ```
 >>> import project
->>> project.getPopulation("Wisconsin", 1990)
->>> 490500
+>>> project.getPopulation("Wisconsin", 2000)
+>>> 5363675
 ```
 
 ## Program Requirements
@@ -74,6 +74,7 @@ Example:
 
 ```
 >>> getMaximumLand("Wisconsin", "Iowa", "Minnesota")
+>>> 
 ```
 
 **getMinimumPopulationDensity(stateName1, stateName2, stateName3, year)**
@@ -85,6 +86,7 @@ Example:
 
 ```
 >>> getMinimumPopulationDensity("Wisconsin", "Iowa", "Minnesota", 2000)
+>>> 
 ```
 
 **calcNewPopulation(stateName, growthRate, yearA, yearB)**
@@ -96,8 +98,7 @@ We use the following formula for population growth prediction in this question: 
  3. *r* is the growth rate.
  4. *t* is the number of years between year *a* and the year *b*.
 
-To implement this function, You can use exp function in Python [math library](https://docs.python.org/3/library/math.html).
-The function should take in the values for the state name, state growth rate and year *a* and year *b*. It should return the value of the predicted population in year *b*. 
+The function should take in the values for the state name, state growth rate and year *a* and year *b*. It should return the value of the predicted population in year *b*. To implement this function, You can use exp function in Python [math library](https://docs.python.org/3/library/math.html).
 
 Example:
 
@@ -114,6 +115,7 @@ Example:
 
 ```
 >>> calcGrowthRate("Wisconsin", 2000, 2010)
+>>> 
 ```
 
 **Be careful to match these names and behaviors exactly. You may implement additional helper functions if you like, but you must have the specified functions.**
