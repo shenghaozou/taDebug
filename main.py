@@ -1,5 +1,5 @@
-from project import *
-
+import project
+import math
 
 # Insert getMaximumLand(stateName1, stateName2, stateName3) function here
 # Step1: Retrieve area values for all 3 states using getArea function and assign it to variables.
@@ -13,13 +13,14 @@ from project import *
 # Step3: Return the min value that you calculated.
 
 
-# Insert calcNewPopulation(stateName, growthRate, yearA, yearB): function here
+# Insert predictPopulation(stateName, growthRate, yearA, yearB): function here
 # Step 1: Using the statename retrieve the intial population for yearA
 # Step 2: Calculate time between yearA and yearB
 # Step 3: Use the math.exp() function in the given formula to calculate final population
-# Step 4: Return the final population
+# Step 4: Return the predicted population
 
-# Insert calcGrowthRate(stateName, finalPopulation, initPopulation, year1, year2) function here
+
+# Insert calcGrowthRate(stateName, yearA, yearB) function here
 # Step 1: Using the statename retrieve the intial population for yearA
 # Step 1: Using the statename retrieve the final population for yearB
 # Step 2: Calculate time between yearA and yearB
@@ -28,7 +29,8 @@ from project import *
 
 
 if __name__ == "__main__":
-    #Example state names. Please play around by changing the state names
+    # Example state names. Please play around by changing the state names
+    # You don't need to change anything below this line
     state1Name = "Wisconsin"
     state2Name = "Iowa"
     state3Name = "Minnesota"
@@ -36,27 +38,24 @@ if __name__ == "__main__":
     # Solving Q1: Finding max Area
     # Here we call the function and see if it gives the correct output
     # Play around by changing the state names and your program should still work.
-    maxArea = getMaximumLand (state1Name, state2Name, state3Name)
+    maxArea = getMaximumLand(state1Name, state2Name, state3Name)
     print ("The maximum land area among the three states %s, %s and %s : " % (state1Name, state2Name, state3Name))
     print (maxArea)
 
     # Solving Q2: Finding minimum Population Density
     # Play around by changing the state names and the year and your program should still work.
-    minPopulationDensity = getMinimumPopulationDensity(state1Name, state2Name, state3Name,2000)
+    minPopulationDensity = getMinimumPopulationDensity(state1Name, state2Name, state3Name, 2000)
     print ("The minimum population density among the three states %s, %s and %s : " % (state1Name, state2Name, state3Name))
     print (minPopulationDensity)
 
     # Solving Q3: Finding final population
     # Play around by changing the state names and the year and your program should still work.
-    newPopulation = calcNewPopulation(state1Name, 0.5, 2000,2010)
+    finalPopulation = predictPopulation(state1Name, 0.5, 2000,2010)
     print ("The new population for %s : " % state1Name)
-    print (newPopulation)
+    print (finalPopulation)
 
     # Solving Q4: Finding minimum Population Density
     # Play around by changing the state names and the year and your program should still work.
     growthRate = calcGrowthRate(state1Name, 2000, 2010)
-    print ("The growth rate  for %s : " % state1Name)
+    print ("The growth rate for %s : " % state1Name)
     print (growthRate)
-
-
-

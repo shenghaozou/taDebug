@@ -1,20 +1,44 @@
 #!/usr/bin/python
-import subprocess, json, re, sys, main
+import subprocess, json, re, sys
+from inspect import getmembers, isfunction
+import main
 
 PASS = 'PASS'
 PROBLEMS = 20
-EPSILON = 0.01
+EPSILON = 0.0001
 
-def areResultExpected(actualResult, expectedResult):
+TESTS = [
+    ("getMaximumLand", ["Wisconsin", "Iowa", "Minnesota"], 86935.83), #1-1
+    ("getMaximumLand", ["Arizona", "California", "Connecticut"], 163694.74), #1-2
+    ("getMaximumLand", ["Georgia", "Iowa", "Hawaii"], 59425.15), #1-3
+    ("getMaximumLand", ["Minnesota", "Iowa", "Wisconsin"], 86935.83), #1-4
+    ("getMaximumLand", ["Pennsylvania", "West Virginia", "Texas"], 268596.46), #1-5
+    ("getMinimumPopulationDensity", ["Wisconsin", "Iowa", "Minnesota", 2000], 52.002450206414075), #2-1
+    ("getMinimumPopulationDensity", ["Georgia", "Iowa", "Hawaii", 2000], 52.002450206414075), #2-2
+    ("getMinimumPopulationDensity", ["Wisconsin", "Iowa", "Minnesota", 2010], 54.13546968775862), #2-3
+    ("getMinimumPopulationDensity", ["Connecticut", "California", "Arizona", 2010], 56.07509586341995), #2-4
+    ("getMinimumPopulationDensity", ["Wisconsin", "Iowa", "Minnesota", 2015], 55.257254791434804), #2-5
+    ("predictPopulation", ["Wisconsin", 0.5, 2000, 2010], 796039951.1495125), #3-1
+    ("predictPopulation", ["Georgia", 0.5, 2000, 2010], 1214977351.5747654), #3-2
+    ("predictPopulation", ["Wisconsin", 0.4, 2000, 2010], 292846732.3790249), #3-3
+    ("predictPopulation", ["Hawaii", 0.4, 2000, 2010], 66147678.89670547), #3-4
+    ("predictPopulation", ["California", 0.6, 2010, 2015], 748265708.7728088), #3-5
+    ("calcGrowthRate", ["Wisconsin", 2000, 2010], 0.005853103209551789), #4-1
+    ("calcGrowthRate", ["Georgia", 2010, 2015], 0.008279847004730256), #4-2
+    ("calcGrowthRate", ["Hawaii", 2000, 2015], 0.010596535979501064), #4-3
+    ("calcGrowthRate", ["California", 2000, 2010], 0.009517981825461748), #4-4
+    ("calcGrowthRate", ["Iowa", 2000, 2015], 0.004047253559630651) #4-5
+]
+
+def runTest(functionName, fn, args, expectedResult):
+    if fn:
+        actualResult = fn(*args)
+    else:
+        return "function %s not found" % functionName
     if abs(actualResult - expectedResult) > EPSILON:
-        return "expected (%s) but found (%s)" % (actualResult, expectedResult)
-    return None
-
-def problem1(lines):
-    expected = 0
-    output = main.test()
-    error = areResultExpected(output, expected)
-    return error if error else PASS
+        return "%s(%s) expected return %s but found %s" % (
+            functionName, ', '.join([str(arg) for arg in args]), actualResult, expectedResult)
+    return PASS
 
 def get_python_binary_name():
     try:
@@ -32,7 +56,7 @@ def get_python_version(python_binary):
         return 'unknown'
     return output
 
-def main():
+def mainFunc():
     result = {'score': 0, 'tests': []}
     program = 'main.py'
 
@@ -45,42 +69,24 @@ def main():
         print('Please check with us about this.')
         print()
 
-    if len(sys.argv) == 2:
-        program = sys.argv[1]
-    try:
-        cmd = [python_binary, program]
-        print('Running your program with this command: ' + ' '.join(cmd) + '\n')
-        output = subprocess.check_output(cmd)
-    except:
-        print('Your Python program crashed.  Please fix it to get any points.')
+    studentFunctions = dict([func for func in getmembers(main) if isfunction(func[1])])
 
-        # chuck output lines by problem
-        problemNumber = None
-        problems = dict() # key:problem number, val: list of lines
-        for line in output.split('\n'):
-            m = re.match(r'Problem (\d+)$', line)
-            if m:
-                problemNumber = int(m.group(1))
-                problems[problemNumber] = []
-            elif problemNumber:
-                problems[problemNumber].append(line)
-
-        # run checker on each section
-        for problemNum in range(1, PROBLEMS + 1):
-            fn = globals().get('problem%d' % problemNum, None) # our test
-            # run test and record output
-            try:
-                testResult = fn()
-            except Exception as e:
-                testResult = "Got exception {} when running test {}".format(
-                    str(e), problemNum)
-            result['tests'].append({
-                'test': problemNum,
-                'result': testResult
-            })
-        # final score
-        passing = [t for t in result['tests'] if t['result'] == PASS]
-        result['score'] = len(passing) * 100 // len(result['tests'])
+    for problemNum in range(1, PROBLEMS + 1):
+        testCase = TESTS[problemNum - 1]
+        # run test and record output
+        try:
+            testResult = runTest(
+                testCase[0], studentFunctions.get(testCase[0]), testCase[1], testCase[2])
+        except Exception as e:
+            testResult = "Got exception {} when running test {}".format(
+                str(e), problemNum)
+        result['tests'].append({
+            'test': problemNum,
+            'result': testResult
+        })
+    # final score
+    passing = [t for t in result['tests'] if t['result'] == PASS]
+    result['score'] = len(passing) * 100 // len(result['tests'])
 
     # save/display results
     with open('result.json', 'w') as f:
@@ -91,4 +97,4 @@ def main():
     print('Score: %d%%' % result['score'])
 
 if __name__ == '__main__':
-    main()
+    mainFunc()

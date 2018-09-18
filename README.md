@@ -37,13 +37,13 @@ The table below shows a **sample** from the dataset that we have.
 </center>
 
 1. What is the value of the maximum land area among any three given states?
-2. What is the least value of population density among the states of Iowa, Kansas and Michigan?
+2. What is the least value of population density among any three given states?
 3. For a given state, what’s the predicted population in the given year? (The function will take in values of initial year, final year, growth rate and state name)
 4. Between any two given years, what is the population growth rate of particular state?
 
-Please make sure the data file area.csv and population.csv are in the same folder with main.py. We don’t require you to know how to read from data file so we provides the following function.
-
 ### Provided Function in Module project.py
+We don’t require you to know how to read from data file so we have provided the following functions. Please make sure the data file area.csv and population.csv are in the same folder along with main.py.
+
 **getArea(stateName)** 
 
 getArea function takes the name of one state as an argument and returns the size of this state area.
@@ -74,22 +74,27 @@ Example:
 
 ```
 >>> getMaximumLand("Wisconsin", "Iowa", "Minnesota")
->>> 
+>>> 86935.83
 ```
 
 **getMinimumPopulationDensity(stateName1, stateName2, stateName3, year)**
 
-Population density is measured as population per unit area. The formula to calculate population density is:
-**Population Density = Population / Land Area**. For this function, you need to retrieve population and area values for the given states and calculate the density. We then find the min value of population density among the three values passed as parameters. To do this, we can use the inbuilt [min()](https://docs.python.org/2/library/functions.html#min) function.
+Population density is measured as population per unit area. 
+
+The formula to calculate population density is:
+
+**Population Density = Population / Land Area (mi²)**
+
+For this function, you need to retrieve population and area values for the given states and calculate the density. We then find the min value of population density among the three values passed as parameters. To do this, we can use the inbuilt [min()](https://docs.python.org/2/library/functions.html#min) function.
 
 Example:
 
 ```
 >>> getMinimumPopulationDensity("Wisconsin", "Iowa", "Minnesota", 2000)
->>> 
+>>> 52.002450206414075
 ```
 
-**calcNewPopulation(stateName, growthRate, yearA, yearB)**
+**predictPopulation(stateName, growthRate, yearA, yearB)**
 
 We use the following formula for population growth prediction in this question: <img src="Population.png" alt="drawing" width="100"/>. Here,
 
@@ -103,19 +108,19 @@ The function should take in the values for the state name, state growth rate and
 Example:
 
 ```
->>> calcNewPopulation("Wisconsin", 0.5, 2000, 2010)
->>> 
+>>> predictPopulation("Wisconsin", 0.5, 2000, 2010)
+>>> 796039951.1495125
 ```
 
 **calcGrowthRate(stateName, yearA, yearB)**
 
-Use the same formula as above to calculate the rate of growth. To do this, you can use the log fucntion present in Python [math library](https://docs.python.org/3/library/math.html). 
+Use the same formula as above to calculate the growth rate. To do this, you can use the log fucntion present in Python [math library](https://docs.python.org/3/library/math.html). 
 
 Example:
 
 ```
 >>> calcGrowthRate("Wisconsin", 2000, 2010)
->>> 
+>>> 0.005853103209551789
 ```
 
 **Be careful to match these names and behaviors exactly. You may implement additional helper functions if you like, but you must have the specified functions.**
